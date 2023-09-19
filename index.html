@@ -7,8 +7,34 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <h1>Simulador de plazos fijos</h1>
+    <h1>Simulador de Plazos Fijos</h1>
 
+    <table class="input-table">
+        <tr>
+            <td><label for="capital">Monto a invertir, sin decimales:</label></td>
+            <td><input type="number" id="capital" min="0"></td>
+        </tr>
+        <tr>
+            <td><label for="plazo">Tiempo de plazo fijo en días (30, 60, 90):</label></td>
+            <td><input type="number" id="plazo" min="0"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><button id="calcular">Calcular</button></td>
+        </tr>
+    </table>
+
+    <div class="hidden" id="resultado">
+        <table>
+            <thead>
+                <tr>
+                    <th>Monto Inicial</th>
+                    <th>Plazo en Días</th>
+                    <th>Monto Final</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
     <script src="./funciones.js"></script>
 </body>
 </html>

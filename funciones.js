@@ -1,7 +1,12 @@
+
 let plazosFijos = [];
 
-function CalcularplazoFijo(capitalInicial, dias) {
-    let tasaDeInteres = 9.83;
+async function CalcularplazoFijo(capitalInicial, dias) {
+    const tasaDeInteres = await obtenerTasaDeInteres(); 
+    if (tasaDeInteres === null) {
+        return null;
+    }
+
     let interes;
 
     if (dias === 30) {
@@ -17,6 +22,7 @@ function CalcularplazoFijo(capitalInicial, dias) {
     let capitalFinal = capitalInicial * (1 + interes / 100);
     return { capitalInicial, dias, capitalFinal };
 }
+
 
 document.getElementById("calcular").addEventListener("click", function () {
     const capital = parseInt(document.getElementById("capital").value);
@@ -41,13 +47,14 @@ function mostrarResultados() {
         const cell2 = row.insertCell(1);
         const cell3 = row.insertCell(2);
 
-        cell1.innerText = `$${plazo.capitalInicial}`;
-        cell2.innerText = `${plazo.dias} días`;
-        cell3.innerText = `$${plazo.capitalFinal.toFixed(2)}`;
+        if (plazo) { 
+            cell1.innerText = `$${plazo.capitalInicial}`;
+            cell2.innerText = `${plazo.dias} días`;
+            cell3.innerText = `$${plazo.capitalFinal.toFixed(2)}`;
+        }
     });
 
     document.getElementById("resultado").classList.remove("hidden");
 }
-
 
 
